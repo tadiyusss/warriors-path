@@ -27,7 +27,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                         </svg>                                            
                     </a>
-                    <a class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer" href="index.html">
+                    <a class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="size-7 drop-shadow-xl/20">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
                         </svg>                                                                              
@@ -276,8 +276,16 @@
                                 mistakes += 1
                                 var input = document.getElementById("input-" + (i+1) + "-" + (j+1));
                                 console.log("Mistake at cell: " + (i+1) + "-" + (j+1) + " with value: " + board[i][j] + " and correct value: " + solved_board[i][j])
+                                input.classList.remove("bg-white");
+                                input.classList.remove("bg-amber-100");
+                                input.classList.add("bg-red-200");
                             } else {
                                 var input = document.getElementById("input-" + (i+1) + "-" + (j+1));
+                                if (input.classList.contains("bg-amber-100") == false){
+                                    input.classList.remove("bg-red-200");
+                                    input.classList.add("bg-amber-100");
+                                }
+                                
                             }
                         } else {
                             var input = document.getElementById("input-" + (i+1) + "-" + (j+1));
@@ -313,14 +321,19 @@
 
                     for (var i = 0; i < 9; i++){
                         var input = document.getElementById("input-" + (row+1) + "-" + (i+1));
-                        input.classList.remove("bg-white");
-                        input.classList.add("bg-amber-100");
+                        if (input.classList.contains("bg-red-200") == false){
+                            input.classList.remove("bg-white");
+                            input.classList.add("bg-amber-100");
+                        }
+                        
                     }
 
                     for (var i = 0; i < 9; i++){
                         var input = document.getElementById("input-" + (i+1) + "-" + (col+1));
-                        input.classList.remove("bg-white");
-                        input.classList.add("bg-amber-100");
+                        if (input.classList.contains("bg-red-200") == false){
+                            input.classList.remove("bg-white");
+                            input.classList.add("bg-amber-100");
+                        }
                     }
                 });
             });
@@ -333,14 +346,18 @@
 
                     for (var i = 0; i < 9; i++){
                         var input = document.getElementById("input-" + (row+1) + "-" + (i+1));
-                        input.classList.remove("bg-amber-100");
-                        input.classList.add("bg-white");
+                        if (input.classList.contains("bg-red-200") == false){
+                            input.classList.remove("bg-amber-100");
+                            input.classList.add("bg-white");
+                        }
                     }
 
                     for (var i = 0; i < 9; i++){
                         var input = document.getElementById("input-" + (i+1) + "-" + (col+1));
-                        input.classList.remove("bg-amber-100");
-                        input.classList.add("bg-white");
+                        if (input.classList.contains("bg-red-200") == false){
+                            input.classList.remove("bg-amber-100");
+                            input.classList.add("bg-white");
+                        }
                     }
 
                 });
@@ -365,8 +382,8 @@
                         this.value = "";
                         board[row][col] = ".";
                     }
-
-                    if (get_mistake_cell(board).mistakes == 0 && get_mistake_cell(board).blank == 0) {
+                    check_mistakes = get_mistake_cell(board)
+                    if (check_mistakes.mistakes == 0 && check_mistakes.blank == 0) {
                         timer_going = false
                         showModal()
                     }
@@ -386,7 +403,8 @@
                         } else {
                             selected_input.value = value;
                             board[selected_input.id.split("-")[1]-1][selected_input.id.split("-")[2]-1] = value;
-                            if (get_mistake_cell(board).mistakes == 0 && get_mistake_cell(board).blank == 0) {
+                            check_mistakes = get_mistake_cell(board)
+                            if (check_mistakes.mistakes == 0 && check_mistakes.blank == 0) {
                                 timer_going = false
                                 showModal()
                             }
