@@ -42,20 +42,19 @@
                     </a>
                     <a class="bg-[url('../../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer" href="">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 drop-shadow-xl/20">
-                            <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-4.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-4.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-4.385l-.922-1.597a1.875 1.875 0 0 0-4.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
-                        </svg>                      
+                            <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
+                        </svg>                     
                     </a>
                 </div>
             </div>
             <div class="text-white max-w-md mx-auto text-center input-field mt-4">
-                <h2 class="text-5xl uppercase text-blue-900">Level 1</h2>
                 <div class="my-4 flex items-center justify-between max-w-92 px-2 mx-auto">
                     <div class="flex items-center space-x-2">
                         <img src="../../assets/images/life.png" class="w-5 h-5">
                         <img src="../../assets/images/life.png" class="w-5 h-5">
                         <img src="../../assets/images/life.png" class="w-5 h-5">
                     </div>
-                    <h6 class="text-blue-900 text-xl">0:00</h6>
+                    <h6 class="text-blue-900 text-xl" id="timer">0:00</h6>
                 </div>
                 <div class="w-full flex justify-center text-black">
                     <input type="number" maxlength="1" name="" id="input-1-1" class="text-center input-field w-10 h-10 focus:outline-none border border-blue-900 bg-white border-t-4 border-l-4 rounded-tl-md">
@@ -189,13 +188,50 @@
                 </div>
             </div>
         </div>
+        <div id="congratulations-modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center">
+            <div class="bg-white rounded-lg p-6 text-center max-w-sm">
+                <h2 class="text-2xl font-bold text-blue-900">Congratulations!</h2>
+                <p class="text-gray-700">You solved the puzzle!</p>
+                <div class="flex items-center space-x-4 justify-center my-8">
+                    <img src="../../assets/images/yellow-star.png" class="w-10">
+                    <img src="../../assets/images/yellow-star.png" class="w-10">
+                    <img src="../../assets/images/yellow-star.png" class="w-10">
+                </div>
+                
+                
+                <button id="close-modal" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">
+                    Close
+                </button>
+            </div>
+        </div>
         <script src="../../assets/js/sudoku.js"></script>
         <script>
             starting_board = sudoku.generate("easy")
             board = sudoku.board_string_to_grid(starting_board)
             selected_input = null;
             input_fields = document.querySelectorAll('.input-field');
-        
+            life = 3
+            timer = 0
+            timer_going = true
+
+            setInterval(function() {
+                if (!timer_going) {
+                    return;
+                }
+                timer += 1;
+                var minutes = Math.floor(timer / 60);
+                var seconds = timer % 60;
+                document.getElementById("timer").textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            }, 1000);
+            
+            function showModal() {
+                document.getElementById("congratulations-modal").classList.remove("hidden");
+            }
+
+            document.getElementById("close-modal").addEventListener("click", function() {
+                document.getElementById("congratulations-modal").classList.add("hidden");
+            });
+
             function get_mistake_cell(board){
                 var mistakes = 0
                 var finished
@@ -225,7 +261,7 @@
                 }
             }
 
-
+            // populate the table with the starting board
             for (var i = 0; i < 9; i++){
                 for (var j = 0; j < 9; j++){
                     input_value = board[i][j]
@@ -243,6 +279,41 @@
             input_fields.forEach(function(input) {
                 input.addEventListener('focus', function() {
                     selected_input = this;
+                    row = this.id.split("-")[1] - 1;
+                    col = this.id.split("-")[2] - 1;
+
+                    for (var i = 0; i < 9; i++){
+                        var input = document.getElementById("input-" + (row+1) + "-" + (i+1));
+                        input.classList.remove("bg-white");
+                        input.classList.add("bg-amber-100");
+                    }
+
+                    for (var i = 0; i < 9; i++){
+                        var input = document.getElementById("input-" + (i+1) + "-" + (col+1));
+                        input.classList.remove("bg-white");
+                        input.classList.add("bg-amber-100");
+                    }
+                });
+            });
+
+            input_fields.forEach(function(input) {
+                input.addEventListener('blur', function() {
+                    selected_input = this;
+                    row = this.id.split("-")[1] - 1;
+                    col = this.id.split("-")[2] - 1;
+
+                    for (var i = 0; i < 9; i++){
+                        var input = document.getElementById("input-" + (row+1) + "-" + (i+1));
+                        input.classList.remove("bg-amber-100");
+                        input.classList.add("bg-white");
+                    }
+
+                    for (var i = 0; i < 9; i++){
+                        var input = document.getElementById("input-" + (i+1) + "-" + (col+1));
+                        input.classList.remove("bg-amber-100");
+                        input.classList.add("bg-white");
+                    }
+
                 });
             });
 
@@ -265,8 +336,10 @@
                         this.value = "";
                         board[row][col] = ".";
                     }
+
                     if (get_mistake_cell(board).mistakes == 0 && get_mistake_cell(board).blank == 0) {
-                        alert("Congratulations! You solved the puzzle!");
+                        timer_going = false
+                        showModal()
                     }
                 });
             });
@@ -285,7 +358,8 @@
                             selected_input.value = value;
                             board[selected_input.id.split("-")[1]-1][selected_input.id.split("-")[2]-1] = value;
                             if (get_mistake_cell(board).mistakes == 0 && get_mistake_cell(board).blank == 0) {
-                                alert("Congratulations! You solved the puzzle!");
+                                timer_going = false
+                                showModal()
                             }
                         }
                         selected_input.focus();
