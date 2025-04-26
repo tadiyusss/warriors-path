@@ -34,17 +34,37 @@
                     </a>
                 </div>
                 <div class="flex space-x-4 items-center">
-                    <a class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-7 drop-shadow-xl/20">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>                                                
-                    </a>
-                    <a class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 drop-shadow-xl/20">
-                            <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
-                        </svg>                     
-                    </a>
+                    <div class="relative inline-block text-left">
+                        <button onclick="toggle_settings()" class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7 drop-shadow-xl/20">
+                                <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
+                            </svg>                      
+                        </button>
+
+                        <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[#FCDCC0] border border-amber-900 shadow-lg ring-1 ring-black/5 focus:outline-hidden p-2 text-amber-900 hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="settings-menu">
+                            <label for="text_size">Font Size</label>
+                            <input type="range" class="w-full accent-amber-900">
+                            <h6>Color Filters</h6>
+                                <div class="flex items-center space-x-2">
+                                    <input class="accent-amber-900" type="radio" name="color_filter" id="color_filter_off">
+                                    <label for="color_filter_off" class="text-sm">Off (Default)</label>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input class="accent-amber-900" type="radio" name="color_filter" id="color_filter_protanopia">
+                                    <label for="color_filter_protanopia" class="text-sm">Protanopia (Red-Blind)</label>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input class="accent-amber-900" type="radio" name="color_filter" id="color_filter_deuteranopia">
+                                    <label for="color_filter_deuteranopia" class="text-sm">Deuteranopia (Green-Blind)</label>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input class="accent-amber-900" type="radio" name="color_filter" id="color_filter_tritanopia">
+                                    <label for="color_filter_tritanopia" class="text-sm">Tritanopia (Blue-Blind)</label>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             <div class="text-white max-w-md mx-auto text-center input-field mt-4">
@@ -231,6 +251,15 @@
             document.getElementById("close-modal").addEventListener("click", function() {
                 document.getElementById("congratulations-modal").classList.add("hidden");
             });
+
+            function toggle_settings(){
+                var settings_menu = document.getElementById("settings-menu");
+                if (settings_menu.classList.contains("hidden")){
+                    settings_menu.classList.remove("hidden")
+                } else {
+                    settings_menu.classList.add("hidden")
+                }
+            }
 
             function get_mistake_cell(board){
                 var mistakes = 0
