@@ -5,3 +5,15 @@
     font-weight: 400;
     font-style: normal;
   }
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-20px); }
+    40% { transform: translateX(20px); }
+    60% { transform: translateX(-20px); }
+    80% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+.animate-shake {
+    animation: shake 0.5s;
+}
