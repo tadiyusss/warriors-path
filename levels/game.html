@@ -27,11 +27,12 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                         </svg>                                            
                     </a>
-                    <a class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="size-7 drop-shadow-xl/20">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-                        </svg>                                                                              
-                    </a>
+                    <button class="bg-[url('../assets/images/circle-wood.png')] bg-cover p-4 text-white flex items-center justify-center cursor-pointer"
+                        onclick="pause()">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="size-7 drop-shadow-xl/20">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                         </svg>                       
+                    </button>
                 </div>
                 <div class="flex space-x-4 items-center">
                     <div class="relative inline-block text-left">
@@ -69,7 +70,7 @@
             </div>
             <div class="text-white max-w-md mx-auto text-center input-field mt-4">
                 <div class="my-4 flex items-center justify-between max-w-92 px-2 mx-auto">
-                    <div class="flex items-center space-x-2">
+                    <div class="flex items-center space-x-2" id="life-container">
                         <img src="../assets/images/life.png" class="w-5 h-5">
                         <img src="../assets/images/life.png" class="w-5 h-5">
                         <img src="../assets/images/life.png" class="w-5 h-5">
@@ -208,6 +209,37 @@
                 </div>
             </div>
         </div>
+        <div id="pause-modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 text-center max-w-sm shadow-xl">
+            <h2 class="text-2xl font-bold text-blue-900 mb-2">Game Paused</h2>
+            <p class="text-gray-700 mb-6">Take a break! Your progress is saved.</p>
+            <div class="flex items-center justify-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+                </svg>  
+            </div>
+                <button id="resume-btn" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800 transition">
+                    Resume
+                </button>
+            </div>
+        </div>
+
+        <div id="gameover-modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 text-center max-w-sm shadow-xl">
+                <h2 class="text-2xl font-bold text-red-700 mb-2">Game Over</h2>
+                <p class="text-gray-700 mb-6">You've run out of lives. Better luck next time!</p>
+                <div class="flex items-center space-x-4 justify-center my-8">
+                    <img src="../assets/images/yellow-star.png" class="w-10 grayscale">
+                    <img src="../assets/images/yellow-star.png" class="w-10 grayscale">
+                    <img src="../assets/images/yellow-star.png" class="w-10 grayscale">
+                </div>
+                <a href="" id="restart-btn" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800 transition">
+                    Restart
+                </a>
+            </div>
+        </div>
+
+
         <div id="congratulations-modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center">
             <div class="bg-white rounded-lg p-6 text-center max-w-sm">
                 <h2 class="text-2xl font-bold text-blue-900">Congratulations!</h2>
@@ -233,6 +265,8 @@
             life = 3
             timer = 0
             timer_going = true
+            current_mistakes = 0
+            mistaken_cells = []
 
             setInterval(function() {
                 if (!timer_going) {
@@ -244,13 +278,49 @@
                 document.getElementById("timer").textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
             }, 1000);
             
+            function update_life(){
+                var life_container = document.getElementById("life-container");
+                life_container.innerHTML = "";
+                for (var i = 0; i < 3; i++) {
+                    var img = document.createElement("img");
+                    img.src = "../assets/images/life.png";
+                    img.classList.add("w-5", "h-5");
+                    if (i >= life) {
+                        img.classList.add("grayscale");
+                    }
+                    life_container.appendChild(img);
+                }
+
+
+            }
+
             function showModal() {
                 document.getElementById("congratulations-modal").classList.remove("hidden");
+            }
+
+            function show_gameover_modal() {
+                document.getElementById("gameover-modal").classList.remove("hidden");
             }
 
             document.getElementById("close-modal").addEventListener("click", function() {
                 document.getElementById("congratulations-modal").classList.add("hidden");
             });
+
+            function pause(){
+                var pause_modal = document.getElementById("pause-modal");
+                if (pause_modal.classList.contains("hidden")){
+                    pause_modal.classList.remove("hidden")
+                    timer_going = false
+                } else {
+                    pause_modal.classList.add("hidden")
+                    timer_going = true
+                }
+            }
+
+            document.getElementById("resume-btn").onclick = function() {
+                document.getElementById("pause-modal").classList.add("hidden");
+                timer_going = true;
+            };
 
             function toggle_settings(){
                 var settings_menu = document.getElementById("settings-menu");
@@ -279,13 +349,22 @@
                                 input.classList.remove("bg-white");
                                 input.classList.remove("bg-amber-100");
                                 input.classList.add("bg-red-200");
+                                // check if the cell is already in the mistaken_cells array
+                                if (mistaken_cells.includes(input.id) == false){
+                                    mistaken_cells.push(input.id)
+                                    life -= 1
+                                    update_life()
+                                    if (life <= 0){
+                                        show_gameover_modal()
+                                    }
+                                }
+
                             } else {
                                 var input = document.getElementById("input-" + (i+1) + "-" + (j+1));
                                 if (input.classList.contains("bg-amber-100") == false){
                                     input.classList.remove("bg-red-200");
                                     input.classList.add("bg-amber-100");
                                 }
-                                
                             }
                         } else {
                             var input = document.getElementById("input-" + (i+1) + "-" + (j+1));
